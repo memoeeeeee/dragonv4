@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adalances Mağaza</title>
+    <meta name="description" content="Adalances Minecraft mağazası için örnek HTML" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <button class="icon-button" aria-label="Menü">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-media" role="img" aria-label="Oyun içi manzara"></div>
+      <div class="hero-logo">
+        <img src="./img/logo.png" alt="Adalances" onerror="this.style.display='none'" />
+        <div class="fallback-logo" aria-hidden="true">ADALANCES</div>
+      </div>
+    </section>
+
+    <main class="content">
+      <section class="categories">
+        <h2 class="section-title">Kategoriler</h2>
+        <div class="card-grid">
+          <a class="category-card" href="#vip">
+            <div class="card-media" aria-hidden="true"></div>
+            <div class="card-title">Vip Üyelikler</div>
+            <div class="card-footer">
+              <span>Vip Üyelikler</span>
+              <span class="chev" aria-hidden="true">›</span>
+            </div>
+          </a>
+
+          <a class="category-card" href="#skyblock">
+            <div class="card-media" aria-hidden="true"></div>
+            <div class="card-title">Skyblock</div>
+            <div class="card-footer">
+              <span>Skyblock</span>
+              <span class="chev" aria-hidden="true">›</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="ip-bar" aria-label="Sunucu IP adresi">
+        <div class="ip-input" role="group" aria-label="Sunucu adresi">
+          <input type="text" value="oyna.adalances.com" aria-label="Sunucu adresi" readonly />
+          <button class="go-button" aria-label="Kopyala" title="Kopyala" data-copy>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 9h9v12H9z" stroke="currentColor" stroke-width="2"/>
+              <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="copy-toast" role="status" aria-live="polite" hidden>Kopyalandı</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Hızlı Linkler</h3>
+          <ul>
+            <li><a href="#">Ana Sayfa</a></li>
+            <li><a href="#">Mağaza</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Destek</h3>
+          <ul>
+            <li><a href="#">Wiki</a></li>
+            <li><a href="#">Yardım Merkezi</a></li>
+            <li><a href="#">Destek Talebi</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Kurumsal</h3>
+          <ul>
+            <li><a href="#">Hizmet Politikası</a></li>
+            <li><a href="#">Gizlilik Politikası</a></li>
+            <li><a href="#">İade Politikası</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Sosyal</h3>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="brand">
+        <img src="./img/logo.png" alt="Adalances" onerror="this.style.display='none'" />
+        <div class="fallback-logo small" aria-hidden="true">ADALANCES</div>
+      </div>
+      <p class="tagline">Adalances Minecraft, Türk Minecraft sunucusu.</p>
+    </footer>
+
+    <script>
+      const button = document.querySelector('[data-copy]');
+      const input = document.querySelector('.ip-input input');
+      const toast = document.querySelector('.copy-toast');
+      if (button && input) {
+        button.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(input.value);
+            if (toast) {
+              toast.hidden = false;
+              setTimeout(() => (toast.hidden = true), 1200);
+            }
+          } catch (err) {}
+        });
+      }
+    </script>
+  </body>
+</html>
